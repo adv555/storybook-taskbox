@@ -7,7 +7,7 @@ export default function Task({
   onPinTask,
 }) {
   return (
-    <div className={`list-item ${state}`} style={{ background: "#ffc200" }}>
+    <div className={`list-item ${state}`}>
       <label className="checkbox">
         <input
           type="checkbox"
