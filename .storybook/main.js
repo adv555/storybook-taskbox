@@ -1,18 +1,31 @@
+const path = require("path");
+
 module.exports = {
-  // stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  stories: ["../src/components/**/*.stories.js"],
-  staticDirs: ["../public"],
+  stories: [
+    "../src/**/*.stories.mdx",
+    "../src/**/*.stories.@(js|jsx|ts|tsx)",
+    "../src/components/**/*.stories.js",
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "@storybook/addon-interactions",
   ],
-  features: {
-    postcss: false,
-  },
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack4",
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\,css&/,
+      use: [
+        {
+          loader: "postcss-loader",
+          options: {
+            ident: "postcss",
+            plugins: [require("tailwindcss"), require("autoprefixer")],
+          },
+        },
+      ],
+      include: path.resolve(__dirname, "../public"),
+    });
+    return config;
   },
 };

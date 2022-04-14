@@ -51,9 +51,20 @@ export default function TaskList() {
     return (
       <div className="list-items" key={"empty"} data-testid="empty">
         <div className="wrapper-message">
-          <span className="icon-check" />
+          <span className="icon-check " />
           <div className="title-message">You have no tasks</div>
           <div className="subtitle-message">Sit back and relax</div>
+          <div className=" flex flex-row items-center justify-center">
+            <span className=" text-lg mx-1 block animate-spin-slow">
+              &#x2B50;
+            </span>
+            <span className=" text-lg mx-1 block animate-spin-slow">
+              &#x2B50;
+            </span>
+            <span className=" text-lg mx-1 block animate-spin-slow">
+              &#x2B50;
+            </span>
+          </div>
         </div>
       </div>
     );
